@@ -1,4 +1,5 @@
 import com.github.jonathanxd.dokkadocio.docIo
+import com.github.jonathanxd.dokkadocio.linkDocs
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
@@ -53,8 +54,8 @@ tasks.dokkaHtml.configure {
                 remoteLineSuffix.set("#L")
             }
 
-            docIo {
-                jitpackIo("com.github.koresframework:KoresProxy:2.6.1")
+            linkDocs {
+                jitpackIo("com.github.koresframework:KoresProxy:2.6.1", ELEMENT_LIST)
             }
         }
     }

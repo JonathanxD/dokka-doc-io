@@ -29,6 +29,13 @@ class DokkaDocIo: Plugin<Project> {
 fun GradleDokkaSourceSetBuilder.docIo(f: DocIoSourceSetBuilder.() -> Unit) =
     f(DocIoSourceSetBuilder(this))
 
+/**
+ * Extension to specify additional documentation for dependencies with documentation hosted in [jitpack.io](https://jitpack.io)
+ * and [javadoc.io](https://javadoc.io).
+ */
+fun GradleDokkaSourceSetBuilder.linkDocs(f: DocIoSourceSetBuilder.() -> Unit) =
+    f(DocIoSourceSetBuilder(this))
+
 class DocIoSourceSetBuilder(private val builder: GradleDokkaSourceSetBuilder) {
     val PACKAGE_LIST = "package-list"
     val ELEMENT_LIST = "package-list"
