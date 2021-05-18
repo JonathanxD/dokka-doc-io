@@ -26,6 +26,10 @@ tasks.withType<Jar>() {
     dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":jar"))
 }
 
+tasks.named("install") {
+    dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":install"))
+}
+
 tasks.withType<nl.javadude.gradle.plugins.license.License> {
     header = rootProject.file("LICENSE")
     strictCheck = true
