@@ -28,7 +28,7 @@ dependencies {
 }
 
 tasks.test {
-    enabled = false
+    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile>() {
