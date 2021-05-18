@@ -68,3 +68,27 @@ tasks.dokkaHtml.configure {
     }
 }
 ```
+
+## Experimental versions
+
+To use experimental versions, you need to declare the plugin in the `buildscript` using `jitpack.io` as a *maven repository*, for example:
+
+```kotlin
+buildscript {
+    repositories {
+        maven(url = "https://jitpack.io")
+    }
+    dependencies {
+        classpath("com.github.JonathanxD.dokka-doc-io:dokka-doc-io-gradle:-SNAPSHOT") {
+            isChanging = true
+        }
+    }
+}
+
+plugins {
+    kotlin("jvm") version "1.5.0"
+    id("org.jetbrains.dokka") version "1.4.32"
+}
+
+apply(plugin = "com.github.jonathanxd.dokka-doc-io")
+```
