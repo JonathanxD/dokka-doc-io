@@ -9,6 +9,7 @@ plugins {
     id("com.github.jonathanxd.dokka-doc-io")
     id("com.github.hierynomus.license") version "0.15.0"
     application
+    maven
 }
 
 group = "com.github.jonathanxd"

@@ -6,6 +6,7 @@ plugins {
     id("com.gradle.plugin-publish") version "0.14.0"
     application
     `java-gradle-plugin`
+    maven
 }
 
 group = "com.github.jonathanxd"

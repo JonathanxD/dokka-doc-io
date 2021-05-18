@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.5.0"
     id("com.github.hierynomus.license") version "0.15.0"
     application
+    maven
 }
 
 group = "com.github.jonathanxd"
