@@ -14,6 +14,10 @@ dependencies {
 
 }
 
+tasks.test {
+    enabled = false
+}
+
 tasks.withType<Jar>() {
     dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":jar"))
 }
