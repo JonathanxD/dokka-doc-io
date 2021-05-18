@@ -22,38 +22,97 @@ class DokkaDocIo: Plugin<Project> {
     }
 }
 
+/**
+ * Extension to specify additional documentation for dependencies with documentation hosted in [jitpack.io](https://jitpack.io)
+ * and [javadoc.io](https://javadoc.io).
+ */
 fun GradleDokkaSourceSetBuilder.docIo(f: DocIoSourceSetBuilder.() -> Unit) =
     f(DocIoSourceSetBuilder(this))
 
 class DocIoSourceSetBuilder(private val builder: GradleDokkaSourceSetBuilder) {
-    fun javadocIo(group: String, name: String, version: String?, elementList: Boolean = false) {
+    val PACKAGE_LIST = "package-list"
+    val ELEMENT_LIST = "package-list"
+
+    /**
+     * Links to a documentation hosted in [javadoc.io](https://javadoc.io).
+     *
+     * Usage example:
+     *
+     * ```kotlin
+     * javadocIo(group = "com.github.jonathanxd", name = "textlexer", version = "1.7")
+     * ```
+     *
+     * If the version is omitted, the latest documentation will be linked.
+     *
+     * @param elementListPath The path to the page which lists the packages that is documented. The most common
+     * path is `package-list`, however, some documentations uses `element-list`. In the cases where the documentation
+     * does not use the default one (which is `package-list`) you must provide the accordingly path.
+     */
+    fun javadocIo(group: String, name: String, version: String?, elementListPath: String = PACKAGE_LIST) {
         val baseUrl = "https://javadoc.io/doc/${group}/${name}/${version ?: "latest"}"
 
-        if (elementList) {
-            builder.externalDocumentationLink(URL("$baseUrl/"), URL("$baseUrl/element-list"))
-        } else {
-            builder.externalDocumentationLink(URL("$baseUrl/"))
-        }
+        builder.externalDocumentationLink(URL("$baseUrl/"), URL("$baseUrl/$elementListPath"))
     }
 
-    fun javadocIo(notation: String, elementList: Boolean = false) =
+    /**
+     * Links to a documentation hosted in [javadoc.io](https://javadoc.io).
+     *
+     * Usage example:
+     *
+     * ```kotlin
+     * javadocIo("com.github.jonathanxd:textlexer:1.7")
+     * ```
+     *
+     * If the version is omitted, the latest documentation will be linked.
+     *
+     * @param elementListPath The path to the page which lists the packages that is documented. The most common
+     * path is `package-list`, however, some documentations uses `element-list`. In the cases where the documentation
+     * does not use the default one (which is `package-list`) you must provide the accordingly path.
+     */
+    fun javadocIo(notation: String, elementListPath: String = PACKAGE_LIST) =
         notation.split(":").let {
-            javadocIo(it[0], it[1], if (it.size > 2) it[2] else null, elementList)
+            javadocIo(it[0], it[1], if (it.size > 2) it[2] else null, elementListPath)
         }
 
-    fun jitpackIo(group: String, name: String, version: String?, elementList: Boolean = false) {
+    /**
+     * Links to a documentation hosted in [jitpack.io](https://jitpack.io/docs/#javadoc-publishing).
+     *
+     * Usage example:
+     *
+     * ```kotlin
+     * jitpackIo(group = "com.github.koresframework", name = "KoresProxy", version = "2.6.1")
+     * ```
+     *
+     * If the version is omitted, the latest documentation will be linked.
+     *
+     * @param elementListPath The path to the page which lists the packages that is documented. The most common
+     * path is `package-list`, however, some documentations uses `element-list`. In the cases where the documentation
+     * does not use the default one (which is `package-list`) you must provide the accordingly path.
+     */
+    fun jitpackIo(group: String, name: String, version: String?, elementListPath: String = PACKAGE_LIST) {
         val baseUrl = "https://jitpack.io/${group.replace(".", "/")}/${name}/${version ?: "latest"}/javadoc"
 
-        if (elementList) {
-            builder.externalDocumentationLink(URL("$baseUrl/"), URL("$baseUrl/element-list"))
-        } else {
-            builder.externalDocumentationLink(URL("$baseUrl/"))
-        }
+        builder.externalDocumentationLink(URL("$baseUrl/"), URL("$baseUrl/$elementListPath"))
     }
 
-    fun jitpackIo(notation: String, elementList: Boolean = false) =
+    /**
+     * Links to a documentation hosted in [jitpack.io](https://jitpack.io/docs/#javadoc-publishing).
+     *
+     * Usage example:
+     *
+     * ```kotlin
+     * jitpackIo("com.github.koresframework:KoresProxy:2.6.1")
+     * ```
+     *
+     * If the version is omitted, the latest documentation will be linked.
+     *
+     * @param elementListPath The path to the page which lists the packages that is documented. The most common
+     * path is `package-list`, however, some documentations uses `element-list`. In the cases where the documentation
+     * does not use the default one (which is `package-list`) you must provide the accordingly path.
+     */
+    fun jitpackIo(notation: String, elementListPath: String = PACKAGE_LIST) =
         notation.split(":").let {
-            jitpackIo(it[0], it[1], if (it.size > 2) it[2] else null, elementList)
+            jitpackIo(it[0], it[1], if (it.size > 2) it[2] else null, elementListPath)
         }
 
 }

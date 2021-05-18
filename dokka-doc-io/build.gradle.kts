@@ -3,12 +3,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.0"
     id("com.github.hierynomus.license") version "0.15.0"
+    id("com.gradle.plugin-publish") version "0.14.0"
     application
     `java-gradle-plugin`
 }
 
 group = "com.github.jonathanxd"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -46,4 +47,17 @@ gradlePlugin {
 tasks.withType<nl.javadude.gradle.plugins.license.License> {
     header = rootProject.file("LICENSE")
     strictCheck = true
+}
+
+pluginBundle {
+    website = "https://github.com/JonathanxD/dokka-doc-io"
+    vcsUrl = "https://github.com/JonathanxD/dokka-doc-io"
+    description = "Extension functions for Kotlin dokka to link with jitpack.io and javadoc.io"
+    tags = listOf("documentation", "dokka-extension", "jitpack.io", "javadoc.io")
+
+    plugins {
+        getByName("dokkaDocIo") {
+            displayName = "Kotlin Dokka Documentation Extension"
+        }
+    }
 }
