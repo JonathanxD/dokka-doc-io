@@ -2,5 +2,5 @@
 rootProject.name = "test-doc-io"
 
 pluginManagement {
-    includeBuild("../dokka-doc-io")
+    includeBuild("../dokka-doc-io-gradle")
 }
