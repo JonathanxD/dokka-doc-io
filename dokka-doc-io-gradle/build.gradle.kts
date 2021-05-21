@@ -137,8 +137,8 @@ publishing {
     }
 
     repositories {
-        val ossrhUsername: String by project
-        val ossrhPassword: String by project
+        val ossrhUsername: String? by project
+        val ossrhPassword: String? by project
 
         maven {
             name = "sonatype"
@@ -152,8 +152,8 @@ publishing {
             name = "snapshot"
             url = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
             credentials {
-                username = ossrhUsername
-                password = ossrhPassword
+                username = ossrhUsername ?: ""
+                password = ossrhPassword ?: ""
             }
         }
     }
