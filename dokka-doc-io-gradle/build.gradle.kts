@@ -15,7 +15,7 @@ plugins {
     maven
 }
 
-group = "com.github.jonathanxd"
+group = "io.github.jonathanxd"
 version = "1.1.0"
 
 repositories {
@@ -45,8 +45,8 @@ application {
 gradlePlugin {
     plugins {
         create("dokkaDocIo") {
-            id = "com.github.jonathanxd.dokka-doc-io"
-            implementationClass = "com.github.jonathanxd.dokkadocio.DokkaDocIo"
+            id = "io.github.jonathanxd.dokka-doc-io"
+            implementationClass = "io.github.jonathanxd.dokkadocio.DokkaDocIo"
         }
     }
 }
@@ -86,7 +86,7 @@ pluginBundle {
     }
 
     mavenCoordinates {
-        groupId = "com.github.jonathanxd"
+        groupId = "io.github.jonathanxd"
         artifactId = "dokka-doc-io"
         version = "1.1.0"
     }
@@ -104,7 +104,7 @@ signing {
 
 publishing {
     publications.withType<MavenPublication> {
-        groupId = "com.github.jonathanxd"
+        groupId = "io.github.jonathanxd"
         artifactId = "dokka-doc-io"
         version = "1.1.0"
 

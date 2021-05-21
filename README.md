@@ -10,7 +10,7 @@ First, you need to apply dokka plugin, as explained in [Dokka Guide](https://kot
 
 ```groovy
 plugins {
-  id "com.github.jonathanxd.dokka-doc-io" version "1.1.0"
+  id "io.github.jonathanxd.dokka-doc-io" version "1.1.0"
 }
 ```
 
@@ -18,7 +18,7 @@ plugins {
 
 ```kotlin
 plugins {
-    id("com.github.jonathanxd.dokka-doc-io") version "1.1.0"
+    id("io.github.jonathanxd.dokka-doc-io") version "1.1.0"
 }
 ```
 
@@ -90,5 +90,5 @@ plugins {
     id("org.jetbrains.dokka") version "1.4.32"
 }
 
-apply(plugin = "com.github.jonathanxd.dokka-doc-io")
+apply(plugin = "io.github.jonathanxd.dokka-doc-io")
 ```

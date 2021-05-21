@@ -5,7 +5,7 @@ plugins {
     maven
 }
 
-group = "com.github.jonathanxd"
+group = "io.github.jonathanxd"
 version = "1.0-SNAPSHOT"
 
 repositories {

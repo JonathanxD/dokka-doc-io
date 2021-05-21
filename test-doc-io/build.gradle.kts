@@ -1,18 +1,17 @@
-import com.github.jonathanxd.dokkadocio.docIo
-import com.github.jonathanxd.dokkadocio.linkDocs
+import io.github.jonathanxd.dokkadocio.linkDocs
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
 plugins {
     kotlin("jvm") version "1.5.0"
     id("org.jetbrains.dokka") version "1.4.32"
-    id("com.github.jonathanxd.dokka-doc-io")
+    id("io.github.jonathanxd.dokka-doc-io")
     id("com.github.hierynomus.license") version "0.15.0"
     application
     maven
 }
 
-group = "com.github.jonathanxd"
+group = "io.github.jonathanxd"
 version = "1.0-SNAPSHOT"
 
 repositories {
