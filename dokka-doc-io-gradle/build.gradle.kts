@@ -12,7 +12,7 @@ plugins {
     maven
 }
 
-val projectVersion = "1.2.1-jdk15"
+val projectVersion = "1.2.2-jdk15"
 
 group = "io.github.jonathanxd"
 version = projectVersion
