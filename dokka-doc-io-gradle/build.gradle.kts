@@ -116,8 +116,6 @@ publishing {
         version = projectVersion
 
         signing.sign(this)
-        artifact(javadocJar)
-        artifact(sourcesJar)
 
         pom {
             name.set("Dokka Documentation Extension")
