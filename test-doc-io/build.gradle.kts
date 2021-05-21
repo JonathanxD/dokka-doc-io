@@ -1,4 +1,4 @@
-import io.github.jonathanxd.dokkadocio.linkDocs
+import io.github.jonathanxd.dokkadocio.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.net.URL
 
@@ -22,6 +22,7 @@ repositories {
 dependencies {
     implementation("com.github.koresframework.Kores:Kores:4.0.2.base")
     implementation("com.github.koresframework:KoresProxy:2.6.1")
+    implementation("com.google.guava:guava:30.1.1-jre")
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
@@ -54,8 +55,20 @@ tasks.dokkaHtml.configure {
                 remoteLineSuffix.set("#L")
             }
 
-            linkDocs {
-                jitpackIo("com.github.koresframework:KoresProxy:2.6.1", ELEMENT_LIST)
+            docs {
+                link {
+                    jitpackIo("com.github.koresframework:KoresProxy", detectVersion(), PACKAGE_LIST)
+                    val guava = urlBuilder {
+                        baseUrl = "https://guava.dev/releases/"
+                        postfixPath = "/api/docs/" // This is the default value
+                        elementListPath = ELEMENT_LIST
+                    }
+
+                    url {
+                        dependency("com.google.guava:guava", detectVersion())
+                        from(guava)
+                    }
+                }
             }
         }
     }

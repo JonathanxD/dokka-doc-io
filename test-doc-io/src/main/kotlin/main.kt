@@ -12,6 +12,8 @@
 import com.github.jonathanxd.koresproxy.KoresProxy
 import com.github.jonathanxd.koresproxy.ProxyData
 import com.github.jonathanxd.koresproxy.gen.DirectInvocationCustom
+import com.google.common.cache.Cache
+import com.google.common.cache.CacheBuilder
 import java.util.concurrent.ThreadLocalRandom
 
 object MyProxy {
@@ -34,6 +36,8 @@ class How {
  * Documented
  */
 fun proxyData(o: Any): ProxyData = KoresProxy.getProxyData(o)
+
+fun cache(): Cache<String, Int> = CacheBuilder.newBuilder().build()
 
 fun main(args: Array<String>) {
     val indy = MyProxy.PROXY

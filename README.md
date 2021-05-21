@@ -30,9 +30,11 @@ The documentation link definition looks like the dependency declaration notation
 tasks.dokkaHtml.configure {
     dokkaSourceSets {
         configureEach {
-            linkDocs {
-                javadocIo("com.github.jonathanxd:textlexer:1.7")
-                jitpackIo("com.github.koresframework:KoresProxy:2.6.1")
+            docs {
+                link {
+                    javadocIo("com.github.jonathanxd:textlexer:1.7")
+                    jitpackIo("com.github.koresframework:KoresProxy:2.6.1")
+                }
             }
         }
     }
@@ -45,9 +47,11 @@ For documentations that uses `element-list` instead of `package-list`, use the f
 tasks.dokkaHtml.configure {
     dokkaSourceSets {
         configureEach {
-            linkDocs {
-                javadocIo("com.github.jonathanxd:textlexer:1.7", ELEMENT_LIST)
-                jitpackIo("com.github.koresframework:KoresProxy:2.6.1", ELEMENT_LIST)
+            docs {
+                link {
+                    javadocIo("com.github.jonathanxd:textlexer:1.7", ELEMENT_LIST)
+                    jitpackIo("com.github.koresframework:KoresProxy:2.6.1", ELEMENT_LIST)
+                }
             }
         }
     }
@@ -60,9 +64,11 @@ You could also specify your own `package-list` file:
 tasks.dokkaHtml.configure {
     dokkaSourceSets {
         configureEach {
-            linkDocs {
-                javadocIo("com.github.jonathanxd:textlexer:1.7", "my-package-list")
-                jitpackIo("com.github.koresframework:KoresProxy:2.6.1", "my-package-list")
+            docs {
+                link {
+                    javadocIo("com.github.jonathanxd:textlexer:1.7", "my-package-list")
+                    jitpackIo("com.github.koresframework:KoresProxy:2.6.1", "my-package-list")
+                }
             }
         }
     }

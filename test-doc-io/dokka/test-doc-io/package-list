@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:////PointingToDeclaration/test-doc-io/[root]/index.html
+$dokka.location://cache/#/PointingToDeclaration/test-doc-io/[root]/cache.html
 $dokka.location://main/#kotlin.Array[kotlin.String]/PointingToDeclaration/test-doc-io/[root]/main.html
 $dokka.location://proxyData/#kotlin.Any/PointingToDeclaration/test-doc-io/[root]/proxy-data.html
 $dokka.location:/How///PointingToDeclaration/test-doc-io/[root]/-how/index.html
