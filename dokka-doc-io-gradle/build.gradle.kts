@@ -12,7 +12,7 @@ plugins {
     maven
 }
 
-val projectVersion = "1.2.2-jdk15"
+val projectVersion = "1.2.3"
 
 group = "io.github.jonathanxd"
 version = projectVersion
@@ -36,6 +36,18 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+val setupPluginsCredentials = tasks.create("setupPluginsCredentials") {
+    val key = System.getenv("GRADLE_PUBLISH_KEY")
+    val secret = System.getenv("GRADLE_PUBLISH_SECRET")
+
+    System.setProperty("gradle.publish.key", key)
+    System.setProperty("gradle.publish.secret", secret)
+}
+
+tasks.withType<com.gradle.publish.PublishTask>() {
+    dependsOn(setupPluginsCredentials)
 }
 
 tasks.withType<KotlinCompile>() {
@@ -105,7 +117,10 @@ artifacts {
 }
 
 signing {
-    isRequired = false
+    isRequired = true
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
     sign(configurations.archives.get())
 }
 
@@ -145,8 +160,8 @@ publishing {
     }
 
     repositories {
-        val ossrhUsername: String? by project
-        val ossrhPassword: String? by project
+        val ossrhUsername: String? = System.getenv("OSSRH_USERNAME")
+        val ossrhPassword: String? = System.getenv("OSSRH_PASSWORD")
 
         maven {
             name = "sonatype"
