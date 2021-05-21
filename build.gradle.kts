@@ -30,7 +30,7 @@ tasks.named("install") {
     dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":install"))
 }
 
-tasks.named("mavenPublish") {
+tasks.create("mavenPublish") {
     dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":publishPluginMavenPublicationToSonatypeRepository"))
 }
 
