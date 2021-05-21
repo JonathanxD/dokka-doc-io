@@ -1,8 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val ossrhUsername: String by project
-val ossrhPassword: String by project
-
 plugins {
     kotlin("jvm") version "1.5.0"
     id("com.github.hierynomus.license") version "0.15.0"
@@ -140,6 +137,9 @@ publishing {
     }
 
     repositories {
+        val ossrhUsername: String by project
+        val ossrhPassword: String by project
+
         maven {
             name = "sonatype"
             url = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
