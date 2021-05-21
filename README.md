@@ -1,7 +1,5 @@
 # Dokka Documentation Extension
 
-**!!! Waiting plugins.gradle.org approval !!!**
-
 Provides extension for [Kotlin Dokka](https://github.com/Kotlin/dokka) to link with documentations hosted in [javadoc.io](https://javadoc.io) and [jitpack.io](https://jitpack.io).
 
 ## Usage
@@ -10,7 +8,7 @@ First, you need to apply dokka plugin, as explained in [Dokka Guide](https://kot
 
 ```groovy
 plugins {
-  id "io.github.jonathanxd.dokka-doc-io" version "1.1.0"
+  id "io.github.jonathanxd.dokka-doc-io" version "1.2.2-jdk15"
 }
 ```
 
@@ -18,9 +16,11 @@ plugins {
 
 ```kotlin
 plugins {
-    id("io.github.jonathanxd.dokka-doc-io") version "1.1.0"
+    id("io.github.jonathanxd.dokka-doc-io") version "1.2.2-jdk15"
 }
 ```
+
+Standard plugin versions (such as `1.2.2` are built using Java 17).
 
 ### Defining documentations
 
@@ -101,9 +101,7 @@ apply(plugin = "io.github.jonathanxd.dokka-doc-io")
 
 ## Maven Repository
 
-Currently, the project is waiting the approval to publish in Gradle Plugin Portal, the only way to use the plugin is to configure [jitpack.io](https://jitpack.io) or [Maven Central](https://search.maven.org/) as a Plugin Repository.
-
-There are two ways to do that, the first one is to configure as a buildscript in your `build.gradle.kts`:
+You could also use Maven Repository as the central for plugins, there are two ways to do that, the first one is to configure as a buildscript in your `build.gradle.kts`:
 
 ```kotlin
 buildscript {
@@ -111,7 +109,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("io.github.jonathanxd:dokka-doc-io:1.1.1")
+        classpath("io.github.jonathanxd:dokka-doc-io:1.2.2-jdk15")
     }
 }
 
@@ -125,7 +123,7 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.namespace == "io.github.jonathanxd") {
-                useModule("io.github.jonathanxd:dokka-doc-io:1.1.1")
+                useModule("io.github.jonathanxd:dokka-doc-io:1.2.2-jdk15")
             }
         }
     }
@@ -139,6 +137,6 @@ pluginManagement {
 And in your `build.gradle.kts`:
 ```kotlin
 plugins {
-    id("io.github.jonathanxd.dokka-doc-io") version "1.1.1"
+    id("io.github.jonathanxd.dokka-doc-io") version "1.2.2-jdk15"
 }
 ```
