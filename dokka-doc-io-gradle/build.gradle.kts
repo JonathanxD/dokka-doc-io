@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "io.github.jonathanxd"
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
     mavenCentral()
@@ -88,7 +88,7 @@ pluginBundle {
     mavenCoordinates {
         groupId = "io.github.jonathanxd"
         artifactId = "dokka-doc-io"
-        version = "1.1.0"
+        version = "1.1.1"
     }
 }
 
@@ -106,7 +106,7 @@ publishing {
     publications.withType<MavenPublication> {
         groupId = "io.github.jonathanxd"
         artifactId = "dokka-doc-io"
-        version = "1.1.0"
+        version = "1.1.1"
 
         signing.sign(this)
         artifact(javadocJar)
