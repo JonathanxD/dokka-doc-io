@@ -96,6 +96,7 @@ artifacts {
 }
 
 signing {
+    isRequired = false
     sign(configurations.archives.get())
 }
 
