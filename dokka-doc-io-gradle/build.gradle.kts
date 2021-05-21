@@ -12,7 +12,7 @@ plugins {
     maven
 }
 
-val projectVersion = "1.2"
+val projectVersion = "1.2.1-jdk15"
 
 group = "io.github.jonathanxd"
 version = projectVersion
@@ -20,6 +20,11 @@ version = projectVersion
 repositories {
     mavenCentral()
     maven(url = "https://plugins.gradle.org/m2/")
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
 }
 
 dependencies {
@@ -61,13 +66,13 @@ tasks.withType<Jar> {
 
 val jar by tasks.named<Jar>("jar")
 
-val javadocJar = tasks.create<Jar>("javadocJar") {
+val javadocJar = tasks.named<Jar>("javadocJar") {
     dependsOn(tasks.dokkaJavadoc)
     archiveClassifier.set("javadoc")
     from(tasks.dokkaJavadoc.get().outputDirectory.get())
 }
 
-val sourcesJar = tasks.create<Jar>("sourcesJar") {
+val sourcesJar = tasks.named<Jar>("sourcesJar") {
     archiveClassifier.set("sources")
     from(sourceSets.main.get().allSource)
 }
@@ -89,6 +94,8 @@ pluginBundle {
         artifactId = "dokka-doc-io"
         version = projectVersion
     }
+
+
 }
 
 artifacts {

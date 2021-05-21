@@ -34,6 +34,10 @@ tasks.create("mavenPublish") {
     dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":publishPluginMavenPublicationToSonatypeRepository"))
 }
 
+tasks.create("gradlePublish") {
+    dependsOn(gradle.includedBuild("dokka-doc-io-gradle").task(":publishPlugins"))
+}
+
 tasks.withType<nl.javadude.gradle.plugins.license.License> {
     header = rootProject.file("LICENSE")
     strictCheck = true
