@@ -92,3 +92,47 @@ plugins {
 
 apply(plugin = "io.github.jonathanxd.dokka-doc-io")
 ```
+
+## Maven Repository
+
+Currently, the project is waiting the approval to publish in Gradle Plugin Portal, the only way to use the plugin is to configure [jitpack.io](https://jitpack.io) or [Maven Central](https://search.maven.org/) as a Plugin Repository.
+
+There are two ways to do that, the first one is to configure as a buildscript in your `build.gradle.kts`:
+
+```kotlin
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("io.github.jonathanxd:dokka-doc-io:1.1.1")
+    }
+}
+
+apply(plugin = "io.github.jonathanxd.dokka-doc-io")
+```
+
+And the second one is to configure a custom resolution for the plugin in the `settings.gradle.kts`:
+
+```kotlin
+pluginManagement {
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.namespace == "io.github.jonathanxd") {
+                useModule("io.github.jonathanxd:dokka-doc-io:1.1.1")
+            }
+        }
+    }
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+```
+
+And in your `build.gradle.kts`:
+```kotlin
+plugins {
+    id("io.github.jonathanxd.dokka-doc-io") version "1.1.1"
+}
+```
